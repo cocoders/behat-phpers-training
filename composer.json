@@ -1,0 +1,21 @@
+{
+    "require": {
+        "symfony/config": "^4.1",
+        "symfony/http-kernel": "^4.1",
+        "symfony/http-foundation": "^4.1",
+        "symfony/routing": "^4.1",
+        "symfony/dependency-injection": "^4.1",
+        "symfony/framework-bundle": "^4.1",
+        "symfony/twig-bundle": "^4.1",
+        "symfony/templating": "^4.1",
+        "symfony/asset": "^4.1"
+    },
+    "autoload": {
+        "psr-4": {
+            "": "src/"
+        }
+    },
+    "require-dev": {
+        "everzet/persisted-objects": "^1.0"
+    }
+}

@@ -1,0 +1,16 @@
+version: '3'
+services:
+  application:
+    image: cocoders/behat-app
+    working_dir: /var/www/todo-app
+    ports:
+      - 8000:8000
+    volumes:
+      - .:/var/www/todo-app
+    command: php -S 0.0.0.0:8000
+
+  selenium-server:
+    image: selenium/standalone-chrome-debug:3.12.0
+    ports:
+      - "4444:4444"
+      - "5900:5900"
