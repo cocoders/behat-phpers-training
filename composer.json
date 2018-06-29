@@ -9,7 +9,9 @@
         "symfony/twig-bundle": "^4.1",
         "symfony/templating": "^4.1",
         "symfony/asset": "^4.1",
-        "behat/behat": "^3.4"
+        "behat/behat": "^3.4",
+        "behat/mink-extension": "^2.3",
+        "behat/mink-goutte-driver": "^1.2"
     },
     "autoload": {
         "psr-4": {

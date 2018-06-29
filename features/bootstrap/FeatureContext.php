@@ -14,6 +14,7 @@ class FeatureContext implements Context
 {
     /** @var TaskList */
     private $taskList;
+
     /**
      * Initializes context.
      *

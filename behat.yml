@@ -1,0 +1,13 @@
+default:
+    suites:
+        model:
+            contexts: [ FeatureContext ]
+        online:
+            contexts:
+                - OnlineFeatureContext
+            filters:  { tags: critical }
+    extensions:
+        Behat\MinkExtension:
+            sessions:
+                main:
+                    goutte: ~
