@@ -4,7 +4,6 @@ namespace Model;
 
 class Task
 {
-
     /**
      * @var string
      */
@@ -18,5 +17,15 @@ class Task
     {
         $this->id = $id;
         $this->content = $content;
+    }
+
+    public function id(): string
+    {
+        return $this->id;
+    }
+
+    public function content(): string
+    {
+        return $this->content;
     }
 }

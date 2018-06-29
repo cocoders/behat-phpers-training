@@ -8,6 +8,7 @@ default:
             filters:  { tags: critical }
     extensions:
         Behat\MinkExtension:
+            base_url: http://application:8000
             sessions:
                 main:
                     goutte: ~

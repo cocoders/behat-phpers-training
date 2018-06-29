@@ -44,11 +44,19 @@ class Kernel extends BaseKernel
 
     public function listAction(Request $request)
     {
-        return $this->render('main.html.twig', ['tasks' => []]);
+        $taskList = new \Infrastructure\File\TaskList();
+
+        return $this->render('main.html.twig', ['tasks' => $taskList->findAll()]);
     }
 
     public function addAction(Request $request)
     {
+        $content = $request->request->get('content');
+
+        $task = new \Model\Task(uniqid(), $content);
+        $taskList = new \Infrastructure\File\TaskList();
+        $taskList->add($task);
+
         return $this->redirectToRoute('list');
     }
 
