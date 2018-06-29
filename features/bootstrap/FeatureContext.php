@@ -23,6 +23,7 @@ class FeatureContext implements Context
      */
     public function __construct()
     {
+        $this->taskList = new \Infrastructure\InMemory\TaskList();
     }
 
     /**
@@ -45,9 +46,9 @@ class FeatureContext implements Context
     /**
      * @Then na liście powinien być :tasksSize task
      */
-    public function naLisciePowinienBycTask($tasksSize)
+    public function naLisciePowinienBycTask(int $tasksSize)
     {
-        if (count($this->taskList->findAll() !== $tasksSize)) {
+        if (count($this->taskList->findAll()) !== $tasksSize) {
             throw new \Exception('Wrong task number');
         }
     }
