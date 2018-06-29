@@ -4,12 +4,16 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Model\Task;
+use Model\TaskList;
 
 /**
  * Defines application features from the specific context.
  */
 class FeatureContext implements Context
 {
+    /** @var TaskList */
+    private $taskList;
     /**
      * Initializes context.
      *
@@ -26,22 +30,25 @@ class FeatureContext implements Context
      */
     public function pustaListeTaskow()
     {
-        throw new PendingException();
+        $this->taskList->clear();
     }
 
     /**
-     * @When dodam nowego taska o treści :arg1
+     * @When dodam nowego taska o treści :taskContent
      */
-    public function dodamNowegoTaskaOTresci($arg1)
+    public function dodamNowegoTaskaOTresci($taskContent)
     {
-        throw new PendingException();
+        $task = new Task('test-id', $taskContent);
+        $this->taskList->add($task);
     }
 
     /**
-     * @Then na liście powinien być :arg1 task
+     * @Then na liście powinien być :tasksSize task
      */
-    public function naLisciePowinienBycTask($arg1)
+    public function naLisciePowinienBycTask($tasksSize)
     {
-        throw new PendingException();
+        if (count($this->taskList->findAll() !== $tasksSize)) {
+            throw new \Exception('Wrong task number');
+        }
     }
 }
