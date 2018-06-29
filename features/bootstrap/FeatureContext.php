@@ -4,6 +4,7 @@ use Behat\Behat\Tester\Exception\PendingException;
 use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Gherkin\Node\TableNode;
+use Model\Content;
 use Model\Task;
 use Model\TaskList;
 
@@ -38,7 +39,7 @@ class FeatureContext implements Context
     /**
      * @When dodam nowego taska o treści :taskContent
      */
-    public function dodamNowegoTaskaOTresci($taskContent)
+    public function dodamNowegoTaskaOTresci(Content $taskContent)
     {
         $task = new Task('test-id', $taskContent);
         $this->taskList->add($task);
@@ -52,5 +53,13 @@ class FeatureContext implements Context
         if (count($this->taskList->findAll()) !== $tasksSize) {
             throw new \Exception('Wrong task number');
         }
+    }
+
+    /**
+     * @Transform :taskContent
+     */
+    public function transformToContent(string $taskContent): Content
+    {
+        return new Content($taskContent);
     }
 }

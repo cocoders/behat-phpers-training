@@ -13,10 +13,10 @@ class Task
      */
     private $content;
 
-    public function __construct(string $id, string $content)
+    public function __construct(string $id, Content $content)
     {
         $this->id = $id;
-        $this->content = $content;
+        $this->content = (string) $content;
     }
 
     public function id(): string
@@ -24,8 +24,8 @@ class Task
         return $this->id;
     }
 
-    public function content(): string
+    public function content(): Content
     {
-        return $this->content;
+        return new Content($this->content);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use Model\Content;
 use Symfony\Bundle\FrameworkBundle\Controller\ControllerTrait;
 use Symfony\Bundle\FrameworkBundle\Kernel\MicroKernelTrait;
 use Symfony\Component\Config\Loader\LoaderInterface;
@@ -53,7 +54,7 @@ class Kernel extends BaseKernel
     {
         $content = $request->request->get('content');
 
-        $task = new \Model\Task(uniqid(), $content);
+        $task = new \Model\Task(uniqid(), new Content($content));
         $taskList = new \Infrastructure\File\TaskList();
         $taskList->add($task);
 
